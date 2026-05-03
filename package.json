@@ -1,0 +1,32 @@
+{
+  "name": "todo_list_app_project",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000t\u0000o\u0000d\u0000o\u0000_\u0000l\u0000i\u0000s\u0000t\u0000_\u0000a\u0000p\u0000p\u0000_\u0000p\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amen-meb/todo_list_app_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/amen-meb/todo_list_app_project/issues"
+  },
+  "homepage": "https://github.com/amen-meb/todo_list_app_project#readme",
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.3",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.4",
+    "html-webpack-plugin": "^5.6.7",
+    "mini-css-extract-plugin": "^2.10.2",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3"
+  }
+}
