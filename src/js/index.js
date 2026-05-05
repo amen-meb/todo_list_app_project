@@ -40,7 +40,7 @@ function openModal(modal) {
 }
 
 function closeModal(modal) {
-    if (modal && typeof modal.close === 'function') {
+    if (modal && typeof modal.close === "function") {
         modal.close();
     } else if (modal) {
         modal.classList.remove('open');
