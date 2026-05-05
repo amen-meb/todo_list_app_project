@@ -51,6 +51,25 @@ function setupEventListeners() {
     // Theme Toggle
     elements.themeBtn.addEventListener('click', toggleTheme);
 
+    // selecting project
+    elements.projectList.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') {
+            currentProjectId = e.target.dataset.id;
+            saveAndRender();
+        }
+    });
+
+    // Adding new project
+    elements.addProjectBtn.addEventListener('click', () => {
+        const projectName = prompt("Enter project name:");
+        if (projectName) {
+            const newProject = new Project(projectName);
+            projects.push(newProject);
+            currentProjectId = newProject.id;
+            saveAndRender();
+        }
+    });
+
 
 
     
