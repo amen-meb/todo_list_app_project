@@ -200,6 +200,15 @@ header {
     opacity: 0.9; 
 }
 
+.btn-edit {
+    background-color: #f1be3d;
+    color: #111827;
+    border-color: #f59e0b;
+}
+.btn-edit:hover {
+    background-color: #ecaa3a;
+}
+
 /*  DIALOG / MODAL  */
 dialog:not([open]) {
     display: none;
@@ -272,6 +281,10 @@ dialog::backdrop {
         border-right: none;
         border-bottom: 1px solid var(--border);
         max-height: 250px; 
+    }
+
+    #delete-project-btn {
+        margin-top: 1rem;
     }
 
     .task-header {

@@ -7,6 +7,7 @@ export const elements = {
     addTaskBtn: document.getElementById("add-task-btn"),
     currentProjectTitle: document.getElementById("current-project-title"),
     todoModal: document.getElementById("todo-modal"),
+    todoModalTitle: document.getElementById("todo-modal-title"),
     todoForm: document.getElementById("todo-form"),
     btnCloseModal: document.getElementById("btn-close-modal")
 };
@@ -42,6 +43,7 @@ export function renderTasks(project) {
                 </div>
                 <div class="task-actions">
                     <button class="btn btn-toggle" data-id="${todo.id}">${todo.completed ? 'Undo' : 'Complete'}</button>
+                    <button class="btn btn-edit" data-id="${todo.id}" type="button">Edit</button>
                     <button class="btn btn-danger btn-delete" data-id="${todo.id}">Delete</button>
                 </div>
             `;

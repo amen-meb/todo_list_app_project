@@ -6,6 +6,7 @@ import '../css/style.css';
 
 let projects = Storage.getTodoList();
 let currentProjectId = projects.length > 0 ? projects[0].id : null;
+let editingTodoId = null;
 
 // Initialization
 function init() {
@@ -86,11 +87,19 @@ function setupEventListeners() {
     
     // open and close modal for adding new task
     elements.addTaskBtn.addEventListener('click', () => {
+        editingTodoId = null;
         elements.todoForm.reset();
+        if (elements.todoModalTitle) {
+            elements.todoModalTitle.textContent = 'New Task';
+        }
         openModal(elements.todoModal);
     });
 
     elements.btnCloseModal.addEventListener('click', () => {
+        editingTodoId = null;
+        if (elements.todoModalTitle) {
+            elements.todoModalTitle.textContent = 'Task Details';
+        }
         closeModal(elements.todoModal);
     });
 
@@ -98,7 +107,7 @@ function setupEventListeners() {
     elements.todoForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const title = document.getElementById('title').value;
-        const description = document.getElementById('desc').value;;
+        const description = document.getElementById('desc').value;
         const dueDate = document.getElementById('date').value;
         const priority = document.getElementById('priority').value;
 
@@ -107,19 +116,34 @@ function setupEventListeners() {
             return;
         }
 
-        const newTodo = new Todo(title, description, dueDate, priority);
         const currentProject = projects.find(p => p.id === currentProjectId);
         if (!currentProject) {
             alert('Unable to find the current project.');
             return;
         }
 
-        currentProject.addTodo(newTodo);
+        if (editingTodoId) {
+            const todo = currentProject.getTodo(editingTodoId);
+            if (todo) {
+                todo.title = title;
+                todo.description = description;
+                todo.dueDate = dueDate;
+                todo.priority = priority;
+            }
+            editingTodoId = null;
+        } else {
+            const newTodo = new Todo(title, description, dueDate, priority);
+            currentProject.addTodo(newTodo);
+        }
+
+        if (elements.todoModalTitle) {
+            elements.todoModalTitle.textContent = 'Task Details';
+        }
         saveAndRender();
         closeModal(elements.todoModal);
     });
 
-    // 6. Complete/Delete Task Actions
+    // 6. Complete/Delete/edit Task Actions
     elements.taskList.addEventListener('click', (e) => {
         const button = e.target.closest('button');
         if (!button || !elements.taskList.contains(button)) return;
@@ -136,6 +160,20 @@ function setupEventListeners() {
         if (button.classList.contains('btn-toggle')) {
             todo.toggleComplete();
             saveAndRender();
+            return;
+        }
+
+        if (button.classList.contains('btn-edit')) {
+            editingTodoId = id;
+            document.getElementById('title').value = todo.title;
+            document.getElementById('desc').value = todo.description;
+            document.getElementById('date').value = todo.dueDate;
+            document.getElementById('priority').value = todo.priority;
+            if (elements.todoModalTitle) {
+                elements.todoModalTitle.textContent = 'Edit Task';
+            }
+            openModal(elements.todoModal);
+            return;
         }
 
         if (button.classList.contains('btn-delete')) {
