@@ -56,14 +56,20 @@ function setupEventListeners() {
     
 }
 
+// Theme functions 
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.body.classList.add("dark-theme");
+        elements.themeBtn.textContent = "☀️ Light Mode";
+    }
 }
 
 function toggleTheme() {
-    const isDark = document.body.classList.toggle('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    document.body.classList.toggle("dark-theme");
+    const isDarkMode = document.body.classList.contains("dark-theme");
+    localStorage.setItem('darkMode', isDarkMode);
+    elements.themeBtn.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
 }
 
 
