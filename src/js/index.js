@@ -69,6 +69,20 @@ function setupEventListeners() {
             saveAndRender();
         }
     });
+
+    // Deleting current project
+    elements.deleteProjectBtn.addEventListener('click', () => {
+        if (projects.length <= 1) {
+            alert('Cannot delete the last project.');
+            return;
+        }
+        const currentProjectIndex = projects.findIndex(p => p.id === currentProjectId);
+        if (currentProjectIndex !== -1) {
+            projects.splice(currentProjectIndex, 1);
+            currentProjectId = projects.length > 0 ? projects[0].id : null;
+            saveAndRender();
+        }
+    });
     
     // open and close modal for adding new task
     elements.addTaskBtn.addEventListener('click', () => {
@@ -135,14 +149,14 @@ function setupEventListeners() {
 function initTheme() {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     if (isDarkMode) {
-        document.body.classList.add("dark-theme");
+        document.body.classList.add("dark-mode");
         elements.themeBtn.textContent = "☀️ Light Mode";
     }
 }
 
 function toggleTheme() {
-    document.body.classList.toggle("dark-theme");
-    const isDarkMode = document.body.classList.contains("dark-theme");
+    document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.body.classList.contains("dark-mode");
     localStorage.setItem('darkMode', isDarkMode);
     elements.themeBtn.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
 }

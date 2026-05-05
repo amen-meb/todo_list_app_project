@@ -3,6 +3,7 @@ export const elements = {
     projectList: document.getElementById("project-list"),
     taskList: document.getElementById("task-list"),
     addProjectBtn: document.getElementById("add-project-btn"),
+    deleteProjectBtn: document.getElementById("delete-project-btn"),
     addTaskBtn: document.getElementById("add-task-btn"),
     currentProjectTitle: document.getElementById("current-project-title"),
     todoModal: document.getElementById("todo-modal"),

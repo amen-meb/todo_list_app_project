@@ -99,6 +99,12 @@ header {
     border-color: var(--primary);
 }
 
+#delete-project-btn {
+    margin-top: auto;
+}
+
+
+
 /*  MAIN CONTAINER (Tasks)  */
 .task-container {
     flex: 1;
@@ -189,7 +195,10 @@ header {
     color: white;
     border-color: var(--priority-high);
 }
-.btn-danger:hover { opacity: 0.9; }
+.btn-danger:hover { 
+    background-color: #dc2626;
+    opacity: 0.9; 
+}
 
 /*  DIALOG / MODAL  */
 dialog:not([open]) {
