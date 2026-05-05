@@ -37,7 +37,7 @@ export default {
     },
     open: true,
     compress: true,
-    port: 9001,
+    port: 9002,
   },
   mode: 'development',
 };
