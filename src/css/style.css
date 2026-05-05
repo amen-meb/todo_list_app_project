@@ -290,3 +290,66 @@ body.dark-mode {
     --primary-hover: #4f46e5;   
 }
 
+body.dark-mode header {
+    background-color: var(--primary);
+    color: white;
+}
+
+body.dark-mode .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+body.dark-mode .btn {
+    background-color: var(--bg-surface);
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+body.dark-mode .btn:hover {
+    background-color: var(--bg-sidebar);
+}
+
+body.dark-mode dialog {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+body.dark-mode .task-item {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+body.dark-mode #project-sidebar {
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+}
+
+body.dark-mode #project-list li {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+body.dark-mode #project-list li:hover {
+    background-color: var(--bg-sidebar);
+}
+
+body.dark-mode #project-list li.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+
