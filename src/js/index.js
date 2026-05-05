@@ -69,10 +69,66 @@ function setupEventListeners() {
             saveAndRender();
         }
     });
-
-
-
     
+    // open and close modal for adding new task
+    elements.addTaskBtn.addEventListener('click', () => {
+        elements.todoForm.reset();
+        openModal(elements.todoModal);
+    });
+
+    elements.btnCloseModal.addEventListener('click', () => {
+        closeModal(elements.todoModal);
+    });
+
+    // Handle task form submission
+    elements.todoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('desc').value;;
+        const dueDate = document.getElementById('date').value;
+        const priority = document.getElementById('priority').value;
+
+        if (!title) {
+            alert('Task title is required.');
+            return;
+        }
+
+        const newTodo = new Todo(title, description, dueDate, priority);
+        const currentProject = projects.find(p => p.id === currentProjectId);
+        if (!currentProject) {
+            alert('Unable to find the current project.');
+            return;
+        }
+
+        currentProject.addTodo(newTodo);
+        saveAndRender();
+        closeModal(elements.todoModal);
+    });
+
+    // 6. Complete/Delete Task Actions
+    elements.taskList.addEventListener('click', (e) => {
+        const button = e.target.closest('button');
+        if (!button || !elements.taskList.contains(button)) return;
+
+        const id = button.dataset.id;
+        if (!id) return;
+
+        const currentProject = projects.find(p => p.id === currentProjectId);
+        if (!currentProject) return;
+
+        const todo = currentProject.getTodo(id);
+        if (!todo) return;
+
+        if (button.classList.contains('btn-toggle')) {
+            todo.toggleComplete();
+            saveAndRender();
+        }
+
+        if (button.classList.contains('btn-delete')) {
+            currentProject.removeTodo(id);
+            saveAndRender();
+        }
+    });
 }
 
 // Theme functions 
