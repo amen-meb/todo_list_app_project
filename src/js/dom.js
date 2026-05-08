@@ -9,7 +9,12 @@ export const elements = {
     todoModal: document.getElementById("todo-modal"),
     todoModalTitle: document.getElementById("todo-modal-title"),
     todoForm: document.getElementById("todo-form"),
-    btnCloseModal: document.getElementById("btn-close-modal")
+    btnCloseModal: document.getElementById("btn-close-modal"),
+
+    projectModal: document.getElementById('project-modal'),
+    projectForm: document.getElementById('project-form'),
+    btnCloseProjectModal: document.getElementById('btn-close-project-modal'),
+    projectNameInput: document.getElementById('project-name')
 };
 
 export function renderProjects(projects, currentProjectId) {

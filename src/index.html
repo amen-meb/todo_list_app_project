@@ -24,6 +24,7 @@
             <button id="delete-project-btn" class="btn btn-danger">Delete Project</button>
         </aside>
 
+
         <!-- Main container for Tasks -->
         <div class="task-container">
             <div class="task-header">
@@ -57,6 +58,20 @@
             <div class="form-actions">
                 <button type="button" id="btn-close-modal" class="btn">Cancel</button>
                 <button type="submit" class="btn btn-primary">Save Task</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- project form modal -->
+    <dialog id="project-modal">
+        <form id="project-form">
+            <h3 id="project-modal-title">New Project</h3>
+            <div class="form-group">
+                <input type="text" id="project-name" placeholder="Project Name" required>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="btn-close-project-modal" class="btn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Project</button>
             </div>
         </form>
     </dialog>

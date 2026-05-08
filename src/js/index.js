@@ -60,14 +60,25 @@ function setupEventListeners() {
         }
     });
 
-    // Adding new project
     elements.addProjectBtn.addEventListener('click', () => {
-        const projectName = prompt("Enter project name:");
-        if (projectName) {
-            const newProject = new Project(projectName);
+        elements.projectForm.reset(); 
+        elements.projectModal.showModal(); 
+    });
+
+    elements.btnCloseProjectModal.addEventListener('click', () => {
+        elements.projectModal.close();
+    });
+
+    elements.projectForm.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+        const name = elements.projectNameInput.value.trim();
+        if (name !== '') {
+            const newProject = new Project(name);
             projects.push(newProject);
-            currentProjectId = newProject.id;
-            saveAndRender();
+            currentProjectId = newProject.id; 
+            
+            saveAndRender(); 
+            elements.projectModal.close(); 
         }
     });
 
@@ -143,7 +154,10 @@ function setupEventListeners() {
         closeModal(elements.todoModal);
     });
 
-    // 6. Complete/Delete/edit Task Actions
+    
+    
+
+    //  Complete/Delete/edit Task Actions
     elements.taskList.addEventListener('click', (e) => {
         const button = e.target.closest('button');
         if (!button || !elements.taskList.contains(button)) return;
